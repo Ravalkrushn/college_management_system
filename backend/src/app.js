@@ -3,6 +3,7 @@ const cors = require("cors");
 
 const adminRoutes = require("./routes/admin");
 const studentRoutes = require("./routes/student");
+const facultyRoutes = require("./routes/faculty");
 
 const app = express();
 
@@ -21,7 +22,6 @@ app.use(
   })
 );
 
-
 /* ✅ BODY PARSERS */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -29,8 +29,9 @@ app.use(express.urlencoded({ extended: true }));
 /* ✅ STATIC UPLOADS */
 app.use("/uploads", express.static("uploads"));
 
-/* ✅ ROUTES */
+/* ✅ ROUTES (AFTER middlewares) */
 app.use("/api/students", studentRoutes);
+app.use("/api/faculty", facultyRoutes);
 app.use("/api/admin", adminRoutes);
 
 app.get("/", (req, res) => {

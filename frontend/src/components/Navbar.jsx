@@ -11,7 +11,7 @@ const Navbar = () => {
     );
 
     if (confirmLogout) {
-      navigate("/"); // Login.jsx route
+      navigate("/"); 
     }
   };
 

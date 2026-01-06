@@ -1,0 +1,172 @@
+/* PAGE */
+.faculty-page {
+  padding: 24px;
+  background: #f4f6f9;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.faculty-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.blue-line {
+  width: 4px;
+  height: 26px;
+  background: #2563eb;
+  border-radius: 4px;
+}
+
+.add-btn {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  font-size: 22px;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+}
+
+/* FORM */
+.faculty-form {
+  background: #fff;
+  margin-top: 20px;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.faculty-form h3 {
+  margin-bottom: 16px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.faculty-form input,
+.faculty-form select,
+.faculty-form textarea {
+  padding: 11px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.faculty-form input:focus,
+.faculty-form select:focus,
+.faculty-form textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37,99,235,0.15);
+}
+
+.faculty-form textarea {
+  grid-column: span 3;
+  resize: none;
+}
+
+/* FORM ACTIONS */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.cancel {
+  background: #e5e7eb;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.save {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* TABLE WRAPPER (STUDENT STYLE) */
+.table-wrapper {
+  margin-top: 20px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  overflow-x: auto;
+}
+
+/* TABLE */
+.faculty-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.faculty-table thead {
+  background: #f1f5f9;
+}
+
+.faculty-table th,
+.faculty-table td {
+  padding: 14px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.faculty-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* ACTION BUTTONS (MATCH STUDENT) */
+.faculty-table td button {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  margin-right: 6px;
+}
+
+.faculty-table td button:first-child {
+  background: #2563eb;
+  color: #fff;
+}
+
+.faculty-table td button:last-child {
+  background: #ef4444;
+  color: #fff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .faculty-form textarea {
+    grid-column: span 1;
+  }
+}

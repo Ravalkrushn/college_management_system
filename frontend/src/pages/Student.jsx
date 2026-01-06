@@ -37,7 +37,6 @@ const Student = () => {
     branch: "",
   });
 
-  /* -------------------- HANDLERS -------------------- */
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -51,7 +50,6 @@ const Student = () => {
     setFormData((prev) => ({ ...prev, semester: sem }));
   };
 
-  /* -------------------- SUBMIT -------------------- */
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -140,7 +138,6 @@ const Student = () => {
     setStudents(res.data);
   };
 
-  /* -------------------- EDIT -------------------- */
 
   const handleEdit = (stu) => {
     setEditId(stu._id);
@@ -167,7 +164,6 @@ const Student = () => {
     });
   };
 
-  /* -------------------- DELETE -------------------- */
 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this student?"))
@@ -176,17 +172,14 @@ const Student = () => {
     fetchStudents();
   };
 
-  /* -------------------- EFFECT -------------------- */
 
   useEffect(() => {
     fetchStudents();
   }, []);
 
-  /* -------------------- UI -------------------- */
 
   return (
     <div className="student-page">
-      {/* HEADER */}
       <div className="student-header">
         <div className="title">
           <span className="red-line"></span>
@@ -197,7 +190,6 @@ const Student = () => {
         </button>
       </div>
 
-      {/* FORM */}
       {showForm && (
         <form className="form-card" onSubmit={handleSubmit}>
           <h3>{editId ? "Edit Student" : "Add Student"}</h3>
@@ -376,10 +368,12 @@ const Student = () => {
         <select
           onChange={(e) => setSearch({ ...search, branch: e.target.value })}
         >
-          <option value="">Branch</option>
-          <option>IT</option>
-          <option>CE</option>
-          <option>ME</option>
+          <option value="">select Branch</option>
+          <option>bba</option>
+          <option>bca</option>
+          <option>bsc</option>
+          <option>btech</option>
+          <option>b.com</option>
         </select>
 
         <button className="search-btn" onClick={handleSearch}>
