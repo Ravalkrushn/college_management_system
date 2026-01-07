@@ -12,8 +12,9 @@ const Layout = ({ children }) => {
 
         <div
           style={{
+            marginLeft: "220px",  
             padding: "28px",
-            background: "#f8fafc",
+            background: "#f1f5f9",
             minHeight: "100vh",
           }}
         >

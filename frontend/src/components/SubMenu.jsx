@@ -32,11 +32,18 @@ const SubMenu = () => {
   return (
     <div
       style={{
+        position: "fixed",
+        top: "64px",        
+        left: 0,
+        width: "220px",
+        height: "calc(100vh - 64px)",
+        background: "#ffffff",
+        borderRight: "1px solid #eef2f7",
+        padding: "16px 12px",
         display: "flex",
-        gap: "12px",
-        padding: "16px 24px",
-        background: "#f9fafb",
-        borderBottom: "1px solid #e5e7eb",
+        flexDirection: "column",
+        gap: "10px",
+        zIndex: 999,
       }}
     >
       {tabs.map((tab) => (
@@ -44,19 +51,31 @@ const SubMenu = () => {
           key={tab}
           onClick={() => handleClick(tab)}
           style={{
-            padding: "8px 20px",
-            borderRadius: "999px",
+            width: "100%",
+            textAlign: "left",
+            padding: "12px 16px",
+            borderRadius: "10px",
             border: "none",
             cursor: "pointer",
+            fontWeight: 500,
             background: isActive(tab)
               ? "linear-gradient(135deg,#2563eb,#1d4ed8)"
-              : "#eef2ff",
-            color: isActive(tab) ? "#fff" : "#1d4ed8",
-            fontWeight: 500,
+              : "transparent",
+            color: isActive(tab) ? "#fff" : "#1e293b",
             boxShadow: isActive(tab)
               ? "0 6px 16px rgba(37,99,235,0.35)"
               : "none",
-            transition: "all 0.3s ease",
+            transition: "all 0.25s ease",
+          }}
+          onMouseEnter={(e) => {
+            if (!isActive(tab)) {
+              e.currentTarget.style.background = "#f1f5f9";
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (!isActive(tab)) {
+              e.currentTarget.style.background = "transparent";
+            }
           }}
         >
           {tab}

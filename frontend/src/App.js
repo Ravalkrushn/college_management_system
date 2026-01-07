@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Student from "./pages/Student";
 import Faculty from "./pages/Faculty"; // ✅ ADD THIS
+import Branch from "./pages/Branch";
 
 function App() {
   return (
@@ -35,6 +36,15 @@ function App() {
           element={
             <Layout>
               <Faculty />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/branch"
+          element={
+            <Layout>
+              <Branch />
             </Layout>
           }
         />

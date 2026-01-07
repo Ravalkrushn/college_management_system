@@ -8,6 +8,7 @@ const Student = () => {
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [students, setStudents] = useState([]);
+  const [branches, setBranches] = useState([]);
   const [editId, setEditId] = useState(null);
 
   const [formData, setFormData] = useState({
@@ -130,6 +131,11 @@ const Student = () => {
     setStudents(res.data);
   };
 
+  const fetchBranches = async () => {
+    const res = await axios.get("http://localhost:5000/api/branches");
+    setBranches(res.data);
+  };
+
   const handleSearch = async () => {
     const query = new URLSearchParams(search).toString();
     const res = await axios.get(
@@ -175,6 +181,7 @@ const Student = () => {
 
   useEffect(() => {
     fetchStudents();
+    fetchBranches();
   }, []);
 
 
@@ -274,11 +281,11 @@ const Student = () => {
               onChange={handleChange}
             >
               <option value="">Select Branch</option>
-              <option>bba</option>
-              <option>bca</option>
-              <option>bsc</option>
-              <option>btech</option>
-              <option>b.com</option>
+              {branches.map((branch) => (
+                <option key={branch._id} value={branch.name}>
+                  {branch.name}
+                </option>
+              ))}
             </select>
 
             <input type="file" name="image" onChange={handleChange} />
@@ -343,7 +350,6 @@ const Student = () => {
         </form>
       )}
 
-      {/* SEARCH */}
       <div className="search-card">
         <input
           placeholder="Enrollment No"
@@ -369,11 +375,11 @@ const Student = () => {
           onChange={(e) => setSearch({ ...search, branch: e.target.value })}
         >
           <option value="">select Branch</option>
-          <option>bba</option>
-          <option>bca</option>
-          <option>bsc</option>
-          <option>btech</option>
-          <option>b.com</option>
+          {branches.map((branch) => (
+            <option key={branch._id} value={branch.name}>
+              {branch.name}
+            </option>
+          ))}
         </select>
 
         <button className="search-btn" onClick={handleSearch}>

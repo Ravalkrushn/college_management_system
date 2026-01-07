@@ -34,7 +34,6 @@ const Navbar = () => {
         overflowX: "hidden",
       }}
     >
-      {/* LEFT */}
       <div
         style={{
           display: "flex",

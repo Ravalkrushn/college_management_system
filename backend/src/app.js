@@ -4,6 +4,7 @@ const cors = require("cors");
 const adminRoutes = require("./routes/admin");
 const studentRoutes = require("./routes/student");
 const facultyRoutes = require("./routes/faculty");
+const branchRoutes = require("./routes/branch");
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use("/uploads", express.static("uploads"));
 app.use("/api/students", studentRoutes);
 app.use("/api/faculty", facultyRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/branches", branchRoutes);
 
 app.get("/", (req, res) => {
   res.send("College Management System API running");
