@@ -1,11 +1,11 @@
-/* PAGE */
+/* ================= PAGE ================= */
 .faculty-page {
   padding: 24px;
   background: #f4f6f9;
   min-height: 100vh;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 .faculty-header {
   display: flex;
   justify-content: space-between;
@@ -38,7 +38,7 @@
   box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
 }
 
-/* FORM */
+/* ================= FORM ================= */
 .faculty-form {
   background: #fff;
   margin-top: 20px;
@@ -79,7 +79,7 @@
   resize: none;
 }
 
-/* FORM ACTIONS */
+/* ================= FORM ACTIONS ================= */
 .form-actions {
   display: flex;
   justify-content: flex-end;
@@ -104,7 +104,7 @@
   cursor: pointer;
 }
 
-/* TABLE WRAPPER (STUDENT STYLE) */
+/* ================= TABLE WRAPPER ================= */
 .table-wrapper {
   margin-top: 20px;
   background: #fff;
@@ -113,7 +113,7 @@
   overflow-x: auto;
 }
 
-/* TABLE */
+/* ================= TABLE ================= */
 .faculty-table {
   width: 100%;
   border-collapse: collapse;
@@ -134,7 +134,7 @@
   background: #f9fafb;
 }
 
-/* ACTION BUTTONS (MATCH STUDENT) */
+/* ================= ACTION BUTTONS ================= */
 .faculty-table td button {
   padding: 6px 14px;
   border-radius: 6px;
@@ -154,7 +154,7 @@
   color: #fff;
 }
 
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
 @media (max-width: 900px) {
   .form-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -169,4 +169,39 @@
   .faculty-form textarea {
     grid-column: span 1;
   }
+}
+
+/* =================================================
+   🌙 DARK MODE OVERRIDES (ROOT FIX)
+================================================= */
+
+.dark .faculty-page {
+  background: #020617;
+}
+
+.dark .faculty-form,
+.dark .table-wrapper {
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+.dark .faculty-table thead {
+  background: #020617;
+}
+
+.dark .faculty-table tbody tr:hover {
+  background: #020617;
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+  background: #020617;
+  color: #f8fafc;
+  border: 1px solid #334155;
+}
+
+.dark .cancel {
+  background: #334155;
+  color: #f8fafc;
 }

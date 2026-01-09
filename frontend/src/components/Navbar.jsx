@@ -1,17 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
-  const [dark, setDark] = useState(false);
+const Navbar = ({ darkMode, setDarkMode }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    const confirmLogout = window.confirm(
-      "Are you sure you want to logout?"
-    );
+    const confirmLogout = window.confirm("Are you sure you want to logout?");
 
     if (confirmLogout) {
-      navigate("/"); 
+      navigate("/");
     }
   };
 
@@ -24,7 +21,8 @@ const Navbar = () => {
         width: "100%",
         maxWidth: "99vw",
         height: "64px",
-        background: "#ffffff",
+        background: darkMode ? "#1e293b" : "#ffffff",
+        color: darkMode ? "#f8fafc" : "#000000",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
@@ -32,6 +30,7 @@ const Navbar = () => {
         boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
         zIndex: 1000,
         overflowX: "hidden",
+        transition: "background 0.3s, color 0.3s",
       }}
     >
       <div
@@ -54,16 +53,23 @@ const Navbar = () => {
       {/* RIGHT */}
       <div style={{ display: "flex", gap: "8px" }}>
         <button
-          onClick={() => setDark(!dark)}
+          onClick={() => setDarkMode(!darkMode)}
           style={{
-            border: "1px solid #e5e7eb",
-            background: "#f8fafc",
+            border: darkMode ? "1px solid #475569" : "1px solid #e5e7eb",
+            background: darkMode ? "#334155" : "#f8fafc",
             padding: "6px 10px",
             borderRadius: "8px",
             cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
-          🌙
+          <img
+            src={darkMode ? "/light-mode.svg" : "/dark.svg"}
+            alt="theme"
+            style={{ width: "22px", height: "22px", objectFit: "contain" }}
+          />
         </button>
 
         <button

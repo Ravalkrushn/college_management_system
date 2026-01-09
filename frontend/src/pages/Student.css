@@ -1,10 +1,11 @@
+/* ================= PAGE ================= */
 .student-page {
   padding: 24px;
   background: #f4f6f9;
   min-height: 100vh;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 .student-header {
   display: flex;
   justify-content: space-between;
@@ -37,7 +38,7 @@
   box-shadow: 0 6px 16px rgba(22,119,255,0.35);
 }
 
-/* FORM */
+/* ================= FORM ================= */
 .form-card {
   background: #fff;
   margin-top: 20px;
@@ -78,6 +79,7 @@ textarea {
   resize: none;
 }
 
+/* ================= FORM ACTIONS ================= */
 .form-actions {
   display: flex;
   justify-content: flex-end;
@@ -102,7 +104,7 @@ textarea {
   cursor: pointer;
 }
 
-/* SEARCH */
+/* ================= SEARCH ================= */
 .search-card {
   margin-top: 28px;
   background: #ffffff;
@@ -130,7 +132,7 @@ textarea {
   cursor: pointer;
 }
 
-/* TABLE */
+/* ================= TABLE ================= */
 .table-wrapper {
   margin-top: 20px;
   background: #fff;
@@ -159,7 +161,7 @@ textarea {
   background: #f9fafb;
 }
 
-/* PHOTO */
+/* ================= PHOTO ================= */
 .student-table img {
   width: 44px;
   height: 44px;
@@ -168,7 +170,7 @@ textarea {
   border: 2px solid #e5e7eb;
 }
 
-/* ACTION */
+/* ================= ACTION ================= */
 .action-cell {
   display: flex;
   gap: 10px;
@@ -192,7 +194,7 @@ textarea {
   color: #fff;
 }
 
-/* EMPTY */
+/* ================= EMPTY ================= */
 .empty-state {
   margin-top: 60px;
   text-align: center;
@@ -204,7 +206,7 @@ textarea {
   margin-bottom: 12px;
 }
 
-/* SEMESTER */
+/* ================= SEMESTER ================= */
 .semester-box {
   margin-top: 20px;
 }
@@ -228,4 +230,44 @@ textarea {
   background: linear-gradient(135deg,#2563eb,#1d4ed8);
   color: #fff;
   box-shadow: 0 4px 14px rgba(37,99,235,0.35);
+}
+
+/* =================================================
+   🌙 DARK MODE OVERRIDES (IMPORTANT)
+================================================= */
+
+.dark .student-page {
+  background: #020617;
+}
+
+.dark .form-card,
+.dark .search-card,
+.dark .table-wrapper {
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+.dark .student-table thead {
+  background: #020617;
+}
+
+.dark .student-table tbody tr:hover {
+  background: #020617;
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+  background: #020617;
+  color: #f8fafc;
+  border: 1px solid #334155;
+}
+
+.dark .cancel {
+  background: #334155;
+  color: #f8fafc;
+}
+
+.dark .empty-state {
+  color: #cbd5e1;
 }
