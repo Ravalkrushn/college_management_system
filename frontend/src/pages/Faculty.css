@@ -1,11 +1,9 @@
-/* ================= PAGE ================= */
 .faculty-page {
   padding: 24px;
   background: #f4f6f9;
   min-height: 100vh;
 }
 
-/* ================= HEADER ================= */
 .faculty-header {
   display: flex;
   justify-content: space-between;
@@ -38,7 +36,6 @@
   box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
 }
 
-/* ================= FORM ================= */
 .faculty-form {
   background: #fff;
   margin-top: 20px;
@@ -79,7 +76,6 @@
   resize: none;
 }
 
-/* ================= FORM ACTIONS ================= */
 .form-actions {
   display: flex;
   justify-content: flex-end;
@@ -104,7 +100,6 @@
   cursor: pointer;
 }
 
-/* ================= TABLE WRAPPER ================= */
 .table-wrapper {
   margin-top: 20px;
   background: #fff;
@@ -113,7 +108,6 @@
   overflow-x: auto;
 }
 
-/* ================= TABLE ================= */
 .faculty-table {
   width: 100%;
   border-collapse: collapse;
@@ -134,7 +128,6 @@
   background: #f9fafb;
 }
 
-/* ================= ACTION BUTTONS ================= */
 .faculty-table td button {
   padding: 6px 14px;
   border-radius: 6px;
@@ -154,7 +147,6 @@
   color: #fff;
 }
 
-/* ================= RESPONSIVE ================= */
 @media (max-width: 900px) {
   .form-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -171,9 +163,6 @@
   }
 }
 
-/* =================================================
-   🌙 DARK MODE OVERRIDES (ROOT FIX)
-================================================= */
 
 .dark .faculty-page {
   background: #020617;

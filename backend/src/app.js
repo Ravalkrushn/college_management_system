@@ -5,10 +5,9 @@ const adminRoutes = require("./routes/admin");
 const studentRoutes = require("./routes/student");
 const facultyRoutes = require("./routes/faculty");
 const branchRoutes = require("./routes/branch");
+const noticeRoutes = require("./routes/noticeRoutes");
 
 const app = express();
-
-/* ✅ CORS (FormData + PUT/DELETE SAFE) */
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -23,18 +22,15 @@ app.use(
   })
 );
 
-/* ✅ BODY PARSERS */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-/* ✅ STATIC UPLOADS */
 app.use("/uploads", express.static("uploads"));
-
-/* ✅ ROUTES (AFTER middlewares) */
 app.use("/api/students", studentRoutes);
 app.use("/api/faculty", facultyRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/branches", branchRoutes);
+app.use("/api/notice", noticeRoutes);
 
 app.get("/", (req, res) => {
   res.send("College Management System API running");

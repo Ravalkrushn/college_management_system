@@ -3,7 +3,8 @@ import Login from "./pages/Login";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Student from "./pages/Student";
-import Faculty from "./pages/Faculty"; // ✅ ADD THIS
+import Faculty from "./pages/Faculty";
+import Notice from "./pages/Notice";// ✅ ADD THIS
 import Branch from "./pages/Branch";
 
 function App() {
@@ -48,7 +49,14 @@ function App() {
             </Layout>
           }
         />
-
+        <Route
+          path="/Notice"
+          element={
+            <Layout>
+              <Notice />
+            </Layout>
+          }
+        />
         <Route path="*" element={<Login />} />
       </Routes>
     </BrowserRouter>

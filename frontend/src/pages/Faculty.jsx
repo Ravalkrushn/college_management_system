@@ -31,7 +31,6 @@ const Faculty = () => {
     emergencyPhone: "",
   });
 
-  /* ================= HANDLE CHANGE ================= */
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -40,7 +39,6 @@ const Faculty = () => {
     }));
   };
 
-  /* ================= RESET FORM ================= */
   const resetForm = () => {
     setFormData({
       firstName: "",
@@ -65,7 +63,6 @@ const Faculty = () => {
     setPhoto(null);
   };
 
-  /* ================= FETCH FACULTY ================= */
   const fetchFaculty = async () => {
     const res = await axios.get("http://localhost:5000/api/faculty");
     setFacultyList(res.data);
@@ -75,7 +72,6 @@ const Faculty = () => {
     fetchFaculty();
   }, []);
 
-  /* ================= SUBMIT ================= */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -91,10 +87,7 @@ const Faculty = () => {
       }
 
       if (editId) {
-        await axios.put(
-          `http://localhost:5000/api/faculty/${editId}`,
-          fd
-        );
+        await axios.put(`http://localhost:5000/api/faculty/${editId}`, fd);
         alert("Faculty updated successfully");
       } else {
         await axios.post("http://localhost:5000/api/faculty", fd);
@@ -113,8 +106,7 @@ const Faculty = () => {
         console.error("STATUS 👉", err.response.status);
 
         alert(
-          err.response.data?.message ||
-          `Server Error (${err.response.status})`
+          err.response.data?.message || `Server Error (${err.response.status})`
         );
       } else if (err.request) {
         console.error("NO RESPONSE 👉", err.request);
@@ -128,7 +120,6 @@ const Faculty = () => {
     }
   };
 
-  /* ================= EDIT ================= */
   const handleEdit = (fac) => {
     setEditId(fac._id);
     setShowForm(true);
@@ -141,9 +132,7 @@ const Faculty = () => {
       dob: fac.dob ? fac.dob.substring(0, 10) : "",
       bloodGroup: fac.bloodGroup || "",
       designation: fac.designation || "",
-      joiningDate: fac.joiningDate
-        ? fac.joiningDate.substring(0, 10)
-        : "",
+      joiningDate: fac.joiningDate ? fac.joiningDate.substring(0, 10) : "",
       salary: fac.salary || "",
       branch: fac.branch || "",
       address: fac.address || "",
@@ -188,39 +177,151 @@ const Faculty = () => {
               onChange={(e) => setPhoto(e.target.files[0])}
             />
 
-            <input name="firstName" value={formData.firstName} placeholder="First Name" onChange={handleChange} required />
-            <input name="lastName" value={formData.lastName} placeholder="Last Name" onChange={handleChange} required />
-            <input name="email" type="email" value={formData.email} placeholder="Email" onChange={handleChange} required />
-            <input name="phone" value={formData.phone} placeholder="Phone" onChange={handleChange} required />
+            <input
+              name="firstName"
+              value={formData.firstName}
+              placeholder="First Name"
+              onChange={handleChange}
+              required
+            />
+            <input
+              name="lastName"
+              value={formData.lastName}
+              placeholder="Last Name"
+              onChange={handleChange}
+              required
+            />
+            <input
+              name="email"
+              type="email"
+              value={formData.email}
+              placeholder="Email"
+              onChange={handleChange}
+              required
+            />
+            <input
+              name="phone"
+              value={formData.phone}
+              placeholder="Phone"
+              onChange={handleChange}
+              required
+            />
 
-            <select name="gender" value={formData.gender} onChange={handleChange} required>
+            <select
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+              required
+            >
               <option value="">Gender</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
               <option value="other">Other</option>
             </select>
 
-            <input type="date" name="dob" value={formData.dob} onChange={handleChange} required />
-            <input name="bloodGroup" value={formData.bloodGroup} placeholder="Blood Group" onChange={handleChange} />
-            <input name="designation" value={formData.designation} placeholder="Designation" onChange={handleChange} required />
-            <input type="date" name="joiningDate" value={formData.joiningDate} onChange={handleChange} required />
-            <input name="salary" value={formData.salary} placeholder="Salary" onChange={handleChange} required />
-            <input name="branch" value={formData.branch} placeholder="Branch" onChange={handleChange} required />
-            <textarea name="address" value={formData.address} placeholder="Address" onChange={handleChange} required />
-            <input name="city" value={formData.city} placeholder="City" onChange={handleChange} required />
-            <input name="state" value={formData.state} placeholder="State" onChange={handleChange} required />
-            <input name="pinCode" value={formData.pinCode} placeholder="Pin Code" onChange={handleChange} required />
+            <input
+              type="date"
+              name="dob"
+              value={formData.dob}
+              onChange={handleChange}
+              required
+            />
+            <input
+              name="bloodGroup"
+              value={formData.bloodGroup}
+              placeholder="Blood Group"
+              onChange={handleChange}
+            />
+            <input
+              name="designation"
+              value={formData.designation}
+              placeholder="Designation"
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="date"
+              name="joiningDate"
+              value={formData.joiningDate}
+              onChange={handleChange}
+              required
+            />
+            <input
+              name="salary"
+              value={formData.salary}
+              placeholder="Salary"
+              onChange={handleChange}
+              required
+            />
+            <input
+              name="branch"
+              value={formData.branch}
+              placeholder="Branch"
+              onChange={handleChange}
+              required
+            />
+            <textarea
+              name="address"
+              value={formData.address}
+              placeholder="Address"
+              onChange={handleChange}
+              required
+            />
+            <input
+              name="city"
+              value={formData.city}
+              placeholder="City"
+              onChange={handleChange}
+              required
+            />
+            <input
+              name="state"
+              value={formData.state}
+              placeholder="State"
+              onChange={handleChange}
+              required
+            />
+            <input
+              name="pinCode"
+              value={formData.pinCode}
+              placeholder="Pin Code"
+              onChange={handleChange}
+              required
+            />
           </div>
 
           <h4>Emergency Contact</h4>
           <div className="form-grid">
-            <input name="emergencyName" value={formData.emergencyName} placeholder="Name" onChange={handleChange} />
-            <input name="emergencyRelation" value={formData.emergencyRelation} placeholder="Relationship" onChange={handleChange} />
-            <input name="emergencyPhone" value={formData.emergencyPhone} placeholder="Phone" onChange={handleChange} />
+            <input
+              name="emergencyName"
+              value={formData.emergencyName}
+              placeholder="Name"
+              onChange={handleChange}
+            />
+            <input
+              name="emergencyRelation"
+              value={formData.emergencyRelation}
+              placeholder="Relationship"
+              onChange={handleChange}
+            />
+            <input
+              name="emergencyPhone"
+              value={formData.emergencyPhone}
+              placeholder="Phone"
+              onChange={handleChange}
+            />
           </div>
 
           <div className="form-actions">
-            <button type="button" className="cancel" onClick={() => { setShowForm(false); setEditId(null); resetForm(); }}>
+            <button
+              type="button"
+              className="cancel"
+              onClick={() => {
+                setShowForm(false);
+                setEditId(null);
+                resetForm();
+              }}
+            >
               Cancel
             </button>
             <button type="submit" className="save" disabled={loading}>
@@ -246,7 +347,9 @@ const Faculty = () => {
           <tbody>
             {facultyList.map((f) => (
               <tr key={f._id}>
-                <td>{f.firstName} {f.lastName}</td>
+                <td>
+                  {f.firstName} {f.lastName}
+                </td>
                 <td>{f.email}</td>
                 <td>{f.phone}</td>
                 <td>{f.employeeId}</td>
