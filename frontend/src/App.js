@@ -1,40 +1,30 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+
 import Login from "./pages/Login";
-import Layout from "./components/Layout";
-import Home from "./pages/Home";
-import Student from "./pages/Student";
+import Dashboard from "./pages/Dashboard";
 import Faculty from "./pages/Faculty";
-import Notice from "./pages/Notice";
+import Student from "./pages/Student";
 import Branch from "./pages/Branch";
+import Notice from "./pages/Notice";
+import Exam from "./pages/Exam";
+
 import ProtectedRoute from "./ProtectedRoute";
 
-function App() {
+const App = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        {/* PUBLIC */}
-        <Route path="/" element={<Login />} />
+        {/* Public Routes */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
 
-        {/* PROTECTED */}
+        {/* Protected Routes */}
         <Route
           path="/dashboard"
           element={
             <ProtectedRoute>
-              <Layout>
-                <Home />
-              </Layout>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/student"
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <Student />
-              </Layout>
+              <Dashboard />
             </ProtectedRoute>
           }
         />
@@ -43,9 +33,16 @@ function App() {
           path="/faculty"
           element={
             <ProtectedRoute>
-              <Layout>
-                <Faculty />
-              </Layout>
+              <Faculty />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/student"
+          element={
+            <ProtectedRoute>
+              <Student />
             </ProtectedRoute>
           }
         />
@@ -54,9 +51,7 @@ function App() {
           path="/branch"
           element={
             <ProtectedRoute>
-              <Layout>
-                <Branch />
-              </Layout>
+              <Branch />
             </ProtectedRoute>
           }
         />
@@ -65,18 +60,25 @@ function App() {
           path="/notice"
           element={
             <ProtectedRoute>
-              <Layout>
-                <Notice />
-              </Layout>
+              <Notice />
             </ProtectedRoute>
           }
         />
-  
-        {/* SAFE FALLBACK */}
+
+        <Route
+          path="/exam"
+          element={
+            <ProtectedRoute>
+              <Exam />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Fallback */}
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
-}
+};
 
 export default App;
