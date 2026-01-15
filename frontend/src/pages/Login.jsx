@@ -7,17 +7,27 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [show, setShow] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // Loader state
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
+    setIsLoading(true); // Show loader
 
     try {
       await API.post("/api/admin/login", { email, password });
-      navigate("/dashboard");
+
+      // login success flag
+      localStorage.setItem("isLoggedIn", "true");
+
+      // Delay navigation slightly to show the loader animation
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 3000);
     } catch {
       setError("Invalid email or password");
+      setIsLoading(false); // Hide loader on error
     }
   };
 
@@ -174,6 +184,17 @@ const Login = () => {
               <button type="submit">Login</button>
             </form>
           </div>
+        </div>
+      </div>
+
+      {/* ===== Loader JSX ===== */}
+      <div className={`loader-overlay ${isLoading ? "show" : ""}`}>
+        <div className="loader-ring">
+          <div className="loader-inner">
+            {/* You can replace this with your logo */}
+            <img src="/loginimg.jpg" alt="Loading Logo" />
+          </div>
+          <div className="loader-spinner">Loading...</div>
         </div>
       </div>
     </>

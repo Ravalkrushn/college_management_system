@@ -11,4 +11,91 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-  
+
+/* ===== Loader CSS ===== */
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 9999;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+  opacity: 0;
+  backdrop-filter: blur(10px);
+}
+
+.loader-overlay.show {
+  display: flex;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.loader-ring {
+  width: 120px;
+  height: 120px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  overflow: visible;
+}
+
+.loader-ring::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  background: conic-gradient(from 0deg, #ffd700ff, #FF7A18, #6EE7B7, #60A5FA, #FFD700);
+  filter: blur(6px);
+  opacity: 0.9;
+  animation: spin 1.8s linear infinite, pulse 1.6s ease-in-out infinite;
+  z-index: -1;
+}
+
+.loader-inner {
+  width: 92px;
+  height: 92px;
+  border-radius: 999px;
+  background: white;
+  display: grid;
+  place-items: center;
+}
+
+.loader-inner img {
+  width: 68px;
+  height: 68px;
+  object-fit: cover;
+  border-radius: 999px;
+  display: block;
+}
+
+.loader-spinner {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: #fff;
+  opacity: 0.95;
+  background: rgba(0, 0, 0, 0.28);
+  padding: 6px 10px;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.98); opacity: .9; }
+  50% { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(0.98); opacity: .9; }
+}

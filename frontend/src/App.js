@@ -1,63 +1,79 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Student from "./pages/Student";
 import Faculty from "./pages/Faculty";
-import Notice from "./pages/Notice";// ✅ ADD THIS
+import Notice from "./pages/Notice";
 import Branch from "./pages/Branch";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* PUBLIC */}
+        <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
 
+        {/* PROTECTED */}
         <Route
           path="/dashboard"
           element={
-            <Layout>
-              <Home />
-            </Layout>
+            <ProtectedRoute>
+              <Layout>
+                <Home />
+              </Layout>
+            </ProtectedRoute>
           }
         />
 
         <Route
           path="/student"
           element={
-            <Layout>
-              <Student />
-            </Layout>
+            <ProtectedRoute>
+              <Layout>
+                <Student />
+              </Layout>
+            </ProtectedRoute>
           }
         />
 
-        {/* ✅ FACULTY ROUTE */}
         <Route
           path="/faculty"
           element={
-            <Layout>
-              <Faculty />
-            </Layout>
+            <ProtectedRoute>
+              <Layout>
+                <Faculty />
+              </Layout>
+            </ProtectedRoute>
           }
         />
 
         <Route
           path="/branch"
           element={
-            <Layout>
-              <Branch />
-            </Layout>
+            <ProtectedRoute>
+              <Layout>
+                <Branch />
+              </Layout>
+            </ProtectedRoute>
           }
         />
+
         <Route
-          path="/Notice"
+          path="/notice"
           element={
-            <Layout>
-              <Notice />
-            </Layout>
+            <ProtectedRoute>
+              <Layout>
+                <Notice />
+              </Layout>
+            </ProtectedRoute>
           }
         />
-        <Route path="*" element={<Login />} />
+  
+        {/* SAFE FALLBACK */}
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>
   );
