@@ -1,3 +1,5 @@
+// backend/src/server.js
+
 require("dotenv").config(); // ✅ FIRST LINE
 
 const app = require("./app");

@@ -8,8 +8,10 @@ import Student from "./pages/Student";
 import Branch from "./pages/Branch";
 import Notice from "./pages/Notice";
 import Exam from "./pages/Exam";
+import Fees from "./pages/Fees";
 
 import ProtectedRoute from "./ProtectedRoute";
+import Layout from "./components/Layout";
 
 const App = () => {
   return (
@@ -70,6 +72,17 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Exam />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/fees"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <Fees />
+              </Layout>
             </ProtectedRoute>
           }
         />

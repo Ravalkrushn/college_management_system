@@ -1,3 +1,5 @@
+// C:\Users\raval\Desktop\college-management-system\backend\src\models\student.model.js
+
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
@@ -42,6 +44,7 @@ const studentSchema = new mongoose.Schema(
       required: true,
       lowercase: true,
       trim: true,
+      unique: true,
     },
 
     semester: {
@@ -89,13 +92,35 @@ const studentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+
+    // 🔥 FEES SUMMARY (FOR FEES MODULE)
+    feeDetails: {
+      totalAmount: {
+        type: Number,
+        default: 0,
+      },
+      paidAmount: {
+        type: Number,
+        default: 0,
+      },
+      lastPaymentDate: {
+        type: Date,
+      },
+      status: {
+        type: String,
+        enum: ["Paid", "Partial", "Unpaid"],
+        default: "Unpaid",
+      },
+    },
   },
   { timestamps: true }
 );
 
-studentSchema.pre("save", async function () {
-  if (!this.isModified("password")) return;
+// 🔐 PASSWORD HASHING
+studentSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 10);
+  next();
 });
 
 module.exports = mongoose.model("Student", studentSchema);

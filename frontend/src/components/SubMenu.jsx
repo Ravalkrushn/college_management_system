@@ -8,6 +8,7 @@ const tabs = [
   "Branch",
   "Notice",
   "Exam",
+  "Fees",
   "Subjects",
   "Admin",
 ];
